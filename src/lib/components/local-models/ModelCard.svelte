@@ -11,7 +11,23 @@
 	import { Trash2 } from 'svelte-lucide';
 	import { Badge } from '$lib/components/ui/badge';
 
-	let { model, onDelete }: { model: any; onDelete: (name: string) => void } = $props();
+	type Model = {
+		name: string;
+		model: string;
+		modified_at: string;
+		size: number;
+		digest: string;
+		details: {
+			parent_model: string;
+			format: string;
+			family: string;
+			families: string[] | null;
+			parameter_size: string;
+			quantization_level: string;
+		};
+	};
+
+	let { model, onDelete }: { model: Model; onDelete: (name: string) => void } = $props();
 
 	let deleting = $state(false);
 
