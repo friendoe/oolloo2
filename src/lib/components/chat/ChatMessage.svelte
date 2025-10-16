@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import { Bot, User } from 'lucide-svelte';
+	import { Bot, User } from '@lucide/svelte';
 
 	type Message = {
 		role: 'user' | 'assistant';

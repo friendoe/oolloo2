@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Box, Zap, Cpu, Database } from 'lucide-svelte';
+	import { Box, Zap, Cpu, Database } from '@lucide/svelte';
 
 	let {
 		title,

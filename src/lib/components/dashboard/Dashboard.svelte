@@ -4,7 +4,7 @@
 	import RunningModelRow from './RunningModelRow.svelte';
 	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert';
-	import { Terminal, Zap } from 'lucide-svelte';
+	import { Terminal, Zap } from '@lucide/svelte';
 	import { Separator } from '$lib/components/ui/separator';
 	import { Badge } from '$lib/components/ui/badge';
 

@@ -3,8 +3,7 @@
 	import ChatMessage from './ChatMessage.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import CustomTextarea from '$lib/components/ui/textarea/CustomTextarea.svelte';
-	import { Send } from 'lucide-svelte';
-	import Select from 'svelte-select';
+	import { Send } from '@lucide/svelte';
 	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert';
 
 	type Message = {
@@ -78,11 +77,16 @@
 		}
 	}
 
-	function handleModelChange(event: CustomEvent<{ value: string; label: string }>) {
-		const newModel = event.detail;
-		if (!newModel) return;
-		selectedModel = newModel;
-		messages = [{ role: 'assistant', content: `Switched to ${newModel.label}. How can I help?` }];
+	function handleModelChange(event: Event) {
+		const target = event.target as HTMLSelectElement;
+		const modelName = target.value;
+		if (!modelName) return;
+
+		const newModel = runningModels.find((m) => m.name === modelName);
+		if (newModel) {
+			selectedModel = { value: newModel.name, label: newModel.name };
+			messages = [{ role: 'assistant', content: `Switched to ${newModel.name}. How can I help?` }];
+		}
 	}
 
 	async function handleSendMessage(e?: Event) {
@@ -160,11 +164,15 @@
 	<header class="p-2 border-b flex justify-center items-center">
 		{#if runningModels.length > 0}
 			<div class="w-[280px]">
-				<Select
-					items={runningModels.map((m) => ({ value: m.name, label: m.name }))}
-					bind:value={selectedModel}
-					on:select={handleModelChange}
-				/>
+				<select
+					class="w-full p-2 border rounded-md bg-background"
+					onchange={handleModelChange}
+					value={selectedModel?.value}
+				>
+					{#each runningModels as model}
+						<option value={model.name}>{model.name}</option>
+					{/each}
+				</select>
 			</div>
 		{:else}
 			<p class="text-lg font-semibold text-muted-foreground">

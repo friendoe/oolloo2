@@ -3,7 +3,6 @@
 	import LocalModels from '$lib/components/local-models/LocalModels.svelte';
 	import Chat from '$lib/components/chat/Chat.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import 'svelte-select/tailwind.css';
 
 	let page: 'dashboard' | 'local-models' | 'chat' = $state('dashboard');
 </script>
