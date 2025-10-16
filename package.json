@@ -43,7 +43,7 @@
 		"@types/node": "^22.15.19",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.545.0",
-		"svelte-lucide": "^2.0.2",
+		"svelte-select": "^5.8.3",
 		"tailwind-merge": "^3.3.0",
 		"tailwindcss": "^4.1.7"
 	}

@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import ModelCard from './ModelCard.svelte';
 	import { Input } from '$lib/components/ui/input';
-	import { Search } from 'svelte-lucide';
+	import { Search } from 'lucide-svelte';
 
 	type Model = {
 		name: string;
