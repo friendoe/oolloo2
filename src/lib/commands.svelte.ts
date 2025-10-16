@@ -1,4 +1,5 @@
 import { invoke } from '@tauri-apps/api/core';
+import { listen } from '@tauri-apps/api/event';
 
 export const preventDefault = <T extends Event>(fn: (e: T) => void): ((e: T) => void) => {
     return (e: T) => {
@@ -62,3 +63,10 @@ export class GlobalState {
         this.greet = '';
     }
 }
+
+export const commands = {
+    fetchAllModels: async (query: string | null) => await invoke<any[]>('fetch_all_models', { query }),
+    fetchModelDetails: async (url: string) => await invoke<any[]>('fetch_model_details', { url }),
+    pullModel: async (model: string) => await invoke('pull_model', { model }),
+    listen: listen,
+};
