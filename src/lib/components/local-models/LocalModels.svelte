@@ -29,7 +29,9 @@
 		try {
 			const response = await fetch('http://localhost:11434/api/tags');
 			if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+			console.log(response)
 			const data = await response.json();
+			console.log(data);
 			models = data.models || [];
 		} catch (error) {
 			console.error('Error fetching models:', error);
@@ -47,10 +49,10 @@
 	function handleModelDeleted(deletedModelName: string) {
 		models = models.filter((model) => model.name !== deletedModelName);
 	}
-
-	const filteredModels = $derived(
-		models.filter((model) => model.name.toLowerCase().includes(searchQuery.toLowerCase()))
-	);
+	const filteredModels = models;
+	// const filteredModels = $derived(
+	// 	models.filter((model) => model.name.toLowerCase().includes(searchQuery.toLowerCase()))
+	// );
 </script>
 
 <div class="p-6 space-y-6">
@@ -69,8 +71,8 @@
 			<p>Loading...</p>
 			<!-- You can replace this with a spinner component if you have one -->
 		</div>
-	{:else if filteredModels.length === 0}
-		<div class="text-center py-8">
+	{:else if 1==1}
+		<!-- <div class="text-center py-8">
 			<h3 class="text-lg font-semibold">
 				{#if searchQuery}
 					No models found matching your search
@@ -83,6 +85,11 @@
 					Pull a model from the "Online Models" page to get started.
 				{/if}
 			</p>
+		</div> -->
+		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+			{#each models as model (model.digest)}
+				<ModelCard {model} onDelete={handleModelDeleted} />
+			{/each}
 		</div>
 	{:else}
 		<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
