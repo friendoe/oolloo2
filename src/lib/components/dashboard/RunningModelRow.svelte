@@ -17,7 +17,9 @@
 		<div class="w-2 h-2 rounded-full bg-green-500"></div>
 		<div>
 			<p class="font-medium">{model.name}</p>
-			<p class="text-sm text-muted-foreground">{model.details.quantization_level}</p>
+			{#if model.details?.quantization_level}
+				<p class="text-sm text-muted-foreground">{model.details.quantization_level}</p>
+			{/if}
 		</div>
 	</div>
 	<div class="flex items-center gap-4">
