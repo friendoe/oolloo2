@@ -14,4 +14,4 @@
 	role="separator"
 	aria-orientation={orientation === 'vertical' ? 'vertical' : 'horizontal'}
 	{...rest}
-/>
+></div>

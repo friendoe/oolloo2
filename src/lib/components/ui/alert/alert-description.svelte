@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { cn } from '$lib/utils.js';
 
-	let { class: className = undefined, ...rest }: { class?: string } = $props();
+	import type { Snippet } from 'svelte';
+
+	let {
+		class: className = undefined,
+		children,
+		...rest
+	}: { class?: string; children: Snippet } = $props();
 </script>
 
 <div
 	class={cn('text-sm [&_p]:leading-relaxed', className)}
 	{...rest}
 >
-	<slot />
+	{@render children()}
 </div>
